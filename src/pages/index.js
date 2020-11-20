@@ -19,9 +19,14 @@ class IndexPage extends Component {
                 a lo largo del tiempo
               </p>
               <p className="stack-mobile">
-                <Link className="button" to="/sobre-mi">
+                <Link className="button blurb-about" to="/sobre-mi">
                   <figure>►</figure>
                   &nbsp;Sobre mi&nbsp;
+                  <figure>◄</figure>
+                </Link>
+                <Link className="button blurb-blog" to="/sobre-mi">
+                  <figure>►</figure>
+                  &nbsp;Artículos&nbsp;
                   <figure>◄</figure>
                 </Link>
                 <a
