@@ -84,6 +84,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: "minimal-ui",
+        icon:'content/images/videocassette_logo.png',
         icons: [
           {
             src: "/logos/logo-192.png",
