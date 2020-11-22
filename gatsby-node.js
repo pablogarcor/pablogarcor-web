@@ -50,22 +50,22 @@ exports.createPages = async ({ graphql, actions }) => {
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              tags
-              category
-              date
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+                tags
+                template
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
   `);
 
   if (markdownQueryResult.errors) {
@@ -171,4 +171,10 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { category }
     });
   });
+
+  createPage({
+    path: '/',
+    component: path.resolve('./src/pages/index.js'),
+    context: {markdownQueryResult}
+  })
 };

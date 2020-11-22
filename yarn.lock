@@ -7927,6 +7927,11 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
+flexsearch@^0.6.22:
+  version "0.6.32"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.6.32.tgz#1e20684d317af65baa445cdd9864a5f5b320f510"
+  integrity sha512-EF1BWkhwoeLtbIlDbY/vDSLBen/E5l/f1Vg7iX5CDymQCamcx1vhlc3tIZxIDplPjgi0jhG37c67idFbjg+v+Q==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -15431,6 +15436,13 @@ react-twitter-widgets@^1.9.5:
   integrity sha512-C12GZzY0i7HsaQHOvfVswAJ0fj94VnC7freDK3Zb72tGEnLDwWDKApZ0yKoO4ywNqa/fcDNCU7JN9FUbQLO5VA==
   dependencies:
     loadjs "^4.2.0"
+
+react-use-flexsearch@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-use-flexsearch/-/react-use-flexsearch-0.1.1.tgz#2db48989a9197ee3d9776a6c2ae1ff6e65919ba2"
+  integrity sha512-UDRDB26HPcAo0gXNkUYYkcjoYCW4FSWr7Ich4adgVr7bqefJG7fnjlcqnwsKQkbZuteRLYzzox+1FKRTt3Z5vg==
+  dependencies:
+    flexsearch "^0.6.22"
 
 react-virtualized-auto-sizer@^1.0.2:
   version "1.0.2"
