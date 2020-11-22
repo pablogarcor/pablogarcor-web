@@ -55,25 +55,6 @@ html {
   -webkit-text-stroke-color: white;
 }
 
-h2 {
-  color: rgb(209, 0, 177);
-  display: block;
-  font-family: "Yellowtail", cursive;
-  font-size: 150px;
-  margin-right: -8em;
-  position: absolute;
-  text-shadow: 0 0 1px rgb(209, 0, 177), 0 -3px 3px rgba(white, 0.8),
-  0 3px 3px rgba(black, 0.5), 0 0 15px rgb(209, 0, 177),
-  0 0 45px rgba(209, 0, 177, 0.8);
-  text-align: center;
-  text-decoration: underline;
-  text-transform: none;
-  transform: skew(-10deg) rotate(-10deg);
-  top: 20px;
-  width: 100%;
-  z-index: 11;
-}
-
 .grid {
   background: linear-gradient(
           180deg,
