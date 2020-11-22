@@ -177,4 +177,10 @@ exports.createPages = async ({ graphql, actions }) => {
     component: path.resolve('./src/pages/index.js'),
     context: {markdownQueryResult}
   })
+
+  createPage({
+    path: '/blog',
+    component: path.resolve('./src/pages/blog.js'),
+    context: {markdownQueryResult}
+  })
 };
