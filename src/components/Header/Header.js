@@ -16,10 +16,9 @@ export default function Header() {
               Pablo Garcia Ortega
             </Link>
           </div>
-          <div className="flex">
+          <div className="flex navbar-sections">
             <Link to="/blog">Artículos</Link>
-            <Link to="/guides">Guias</Link>
-            <Link to="/me">Sobre mi</Link>
+            <Link to="/sobre-mi">Sobre mi</Link>
             <button
               id="dark-mode-button"
               onClick={(event) => {
