@@ -96,7 +96,6 @@ exports.createPages = async ({ graphql, actions }) => {
   // =====================================================================================
 
   postsEdges.forEach((post, i) => {
-    console.log(post)
     const previous = i === postsEdges.length - 1 ? null : postsEdges[i + 1].node
     const next = i === 0 ? null : postsEdges[i - 1].node
     if (post.node.frontmatter.tags) {
