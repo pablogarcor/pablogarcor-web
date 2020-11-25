@@ -140,6 +140,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   createPage({
     path: '/sobre-mi',
-    component: path.resolve('./src/components/About/about.jsx'),
+    component: path.resolve('./src/components/About/About.jsx'),
   })
 };
