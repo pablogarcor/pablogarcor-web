@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import {Helmet} from "react-helmet";
 import "./About.css";
 import pablo from "../../../content/images/pablo.jpg"
-import {Helmet} from "react-helmet";
 import config from "../../../data/SiteConfig";
 import Layout from "../../layout";
 
