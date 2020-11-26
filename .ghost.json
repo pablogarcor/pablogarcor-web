@@ -1,0 +1,6 @@
+{
+  "production": {
+    "apiUrl":"https://pablogarcor.herokuapp.com",
+    "contentApiKey":"0caf398bd2588b953b1ae39099"
+  }
+}
