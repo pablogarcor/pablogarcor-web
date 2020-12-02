@@ -14,7 +14,6 @@ export default function PostTemplate({ data, pageContext }) {
   const post = data.ghostPost
   const { previous, next } = pageContext
   const { tags, thumbnail, title, description, date } = post
-  debugger
   const commentBox = React.createRef()
 
   useEffect(() => {

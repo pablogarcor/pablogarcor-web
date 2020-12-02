@@ -10,7 +10,7 @@ import config from "../../data/SiteConfig";
 import Posts from "../components/Posts/Posts";
 
 export default function BlogIndex({ data }) {
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allGhostPost.edges
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])
 
   return (
@@ -34,22 +34,15 @@ export default function BlogIndex({ data }) {
 
 export const pageQuery = graphql`
   query BlogQuery {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY",locale:"es")
-            title
-            tags
-          }
-        }
+    allGhostPost(sort: {fields: published_at, order: DESC}) {
+    edges {
+      node {
+        id
+        slug
+        published_at(locale: "es", formatString: "MMMM DD, YYYY")
+        title
       }
     }
+  }
   }
 `
