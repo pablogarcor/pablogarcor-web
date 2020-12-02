@@ -67,25 +67,17 @@ export default function IndexPage ({data}) {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    latest: allMarkdownRemark(
-      limit: 5
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY",locale:"es")
-            title
-            tags
-          }
-        }
+query IndexQuery {
+  latest: allGhostPost(limit: 5, sort: {order: DESC, fields: created_at}) {
+    edges {
+      node {
+        id
+        slug
+        title
+        published_at(formatString: "MMMM DD, YYYY", locale: "es")
       }
     }
   }
+}
 `
 
