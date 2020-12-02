@@ -31,8 +31,8 @@ module.exports = {
     {
       resolve: `gatsby-source-ghost`,
       options: {
-        apiUrl: `https://gatsby.ghost.io`,
-        contentApiKey: `9cc5c67c358edfdd81455149d0`,
+        apiUrl: `https://pablogarcor.herokuapp.com`,
+        contentApiKey: `0caf398bd2588b953b1ae39099`,
       }
     },
     {

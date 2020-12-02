@@ -61,7 +61,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
   `);
   if (ghostQueryResult.errors) {
-    console.error(ghostQueryResult.errors);
     throw ghostQueryResult.errors;
   }
   const tagSet = new Set();
