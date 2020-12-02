@@ -46,45 +46,41 @@ exports.createPages = async ({ graphql, actions }) => {
   const categoryPage = path.resolve("src/templates/category.jsx");
 
   // Get a full list of markdown posts
-  const markdownQueryResult = await graphql(`
-    {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+  const ghostQueryResult = await graphql(`
+      {
+        allGhostPost(sort: {order: DESC, fields: published_at}) {
           edges {
             node {
+              title
               id
-              frontmatter {
-                title
-                tags
-              }
-              fields {
-                slug
-              }
+              slug
+              published_at
             }
           }
         }
       }
   `);
-  if (markdownQueryResult.errors) {
-    console.error(markdownQueryResult.errors);
-    throw markdownQueryResult.errors;
+  if (ghostQueryResult.errors) {
+    console.error(ghostQueryResult.errors);
+    throw ghostQueryResult.errors;
   }
   const tagSet = new Set();
   const categorySet = new Set();
 
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const postsEdges = ghostQueryResult.data.allGhostPost.edges;
 
   // Sort posts
   postsEdges.sort((postA, postB) => {
     const dateA = moment(
-      postA.node.frontmatter.date,
+      postA.node.published_at,
       siteConfig.dateFromFormat
     );
 
     const dateB = moment(
-      postB.node.frontmatter.date,
+      postB.node.published_at,
       siteConfig.dateFromFormat
     );
-
+    console.log(dateA)
     if (dateA.isBefore(dateB)) return 1;
     if (dateB.isBefore(dateA)) return -1;
 
@@ -98,17 +94,17 @@ exports.createPages = async ({ graphql, actions }) => {
   postsEdges.forEach((post, i) => {
     const previous = i === postsEdges.length - 1 ? null : postsEdges[i + 1].node
     const next = i === 0 ? null : postsEdges[i - 1].node
-    if (post.node.frontmatter.tags) {
-      post.node.frontmatter.tags.forEach((tag) => {
+    if (post.node.tags) {
+      post.node.tags.forEach((tag) => {
         tagSet.add(tag)
       })
     }
 
     createPage({
-      path: post.node.fields.slug,
+      path: post.node.slug,
       component: postPage,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
         previous,
         next,
       },
@@ -136,46 +132,10 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: '/',
     component: path.resolve('./src/pages/index.js'),
-    context: {markdownQueryResult}
+    context: {ghostQueryResult}
   })
   createPage({
     path: '/sobre-mi',
     component: path.resolve('./src/components/About/About.jsx'),
   })
 };
-
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const postTemplate = path.resolve(`src/templates/ghost.js`)
-  // Query Ghost data
-  const result = await graphql(`
-    {
-      allGhostPost(sort: { order: ASC, fields: published_at }) {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  `)
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
-  }
-  if (!result.data.allGhostPost) {
-    return
-  }
-  // Create pages for each Ghost post
-  const items = result.data.allGhostPost.edges
-  items.forEach(({ node }) => {
-    node.url = `/${node.slug}/`
-    actions.createPage({
-      path: node.url,
-      component: postTemplate,
-      context: {
-        slug: node.slug,
-      },
-    })
-  })
-}

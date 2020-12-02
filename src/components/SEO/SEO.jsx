@@ -15,7 +15,7 @@ export default function SEO({
   let postURL
 
   if (postSEO) {
-    const postMeta = postNode.frontmatter
+    const postMeta = postNode
     title = postMeta.title
     description = postNode.excerpt
 

@@ -11,9 +11,9 @@ import config from "../../data/SiteConfig";
 import {slugify} from '../utils/helpers'
 
 export default function PostTemplate({ data, pageContext }) {
-  const post = data.markdownRemark
+  const post = data.ghostPost
   const { previous, next } = pageContext
-  const { tags, thumbnail, title, description, date } = post.frontmatter
+  const { tags, thumbnail, title, description, date } = post
   debugger
   const commentBox = React.createRef()
 
@@ -38,8 +38,8 @@ export default function PostTemplate({ data, pageContext }) {
 
   return (
     <Layout>
-      <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
-      <SEO postPath={post.fields.slug} postNode={post} postSEO />
+      <Helmet title={`${post.title} | ${config.siteTitle}`} />
+      <SEO postPath={post.slug} postNode={post} postSEO />
       <div className="container">
         <article>
           <header className="article-header">
@@ -89,17 +89,12 @@ export default function PostTemplate({ data, pageContext }) {
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt
-      fields {
-        slug
-      }
-      frontmatter {
+      ghostPost(slug: {eq: $slug}) {
         title
-        date(formatString: "DD MMMM, YYYY", locale: "es")
-        tags
+        slug
+        published_at(locale: "es", formatString: "MMMM DD, YYYY")
+        html
+        excerpt
       }
     }
-  }
 `
