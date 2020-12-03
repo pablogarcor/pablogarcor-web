@@ -40,7 +40,7 @@ export default function IndexPage ({data}) {
             &nbsp;Sobre mi&nbsp;
             <figure>◄</figure>
           </Link>
-          <Link className="button blurb-blog" to="/sobre-mi">
+          <Link className="button blurb-blog" to="/blog">
             <figure>►</figure>
             &nbsp;Artículos&nbsp;
             <figure>◄</figure>
