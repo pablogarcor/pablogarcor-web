@@ -74,7 +74,7 @@ query IndexQuery {
         id
         slug
         title
-        published_at(formatString: "MMMM DD, YYYY", locale: "es")
+        published_at
       }
     }
   }

@@ -13,7 +13,7 @@ import {slugify} from '../utils/helpers'
 export default function PostTemplate({ data, pageContext }) {
   const post = data.ghostPost
   const { previous, next } = pageContext
-  const { tags, thumbnail, title, description, date } = post
+  const { tags, thumbnail, title, description, published_at } = post
   const commentBox = React.createRef()
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function PostTemplate({ data, pageContext }) {
                   <div className="post-meta">
                     <div>
                       Por <Link to="/me">Pablo Garcia Ortega</Link> el{' '}
-                      <time>{date}</time>
+                      <time>{published_at}</time>
                     </div>
                     {tags && (
                       <div className="tags">
@@ -91,7 +91,7 @@ export const pageQuery = graphql`
       ghostPost(slug: {eq: $slug}) {
         title
         slug
-        published_at(locale: "es", formatString: "MMMM DD, YYYY")
+        published_at(locale: "es", formatString: "DD MMMM, YYYY")
         html
         excerpt
       }

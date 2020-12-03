@@ -1,23 +1,20 @@
 import React, { useMemo } from 'react'
 import { Link } from 'gatsby'
+import { es } from 'date-fns/locale'
+import { format, differenceInCalendarMonths, isAfter } from 'date-fns'
 
 const Cell = ({ node }) => {
   const date = new Date(node.date)
-  const oneMonthAgo = new Date()
-  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
-  let isNew = false
-
-  if (date > oneMonthAgo) {
-    isNew = true
-  }
+  const oneMonthAgo = differenceInCalendarMonths(new Date(),1)
+  const isNew = isAfter(date,oneMonthAgo)
 
   const isPopular = node.categories && node.categories.includes('Popular')
 
-  const dateArr = node.date.split(' ')
+  const dateArr = format(date,'dd MMMM, yyyy',{ locale:es })
+    .split(' ')
   dateArr.pop()
-  dateArr[0] = dateArr[0].slice(0, 3)
-  const formattedDate = dateArr.join(' ').slice(0, -1)
-
+  dateArr[1] = dateArr[1].slice(0, 3)
+  const formattedDate = dateArr.join(' ')
   return (
     <div className="post" key={node.id}>
       <Link to={node.slug}>
@@ -25,7 +22,7 @@ const Cell = ({ node }) => {
           <time>{formattedDate}</time>
           <h3>{node.title}</h3>
         </div>
-        {isNew && <div className="new-post">New!</div>}
+        {isNew && <div className="new-post">¡Nuevo!</div>}
         {isPopular && <div className="popular-post">Popular</div>}
       </Link>
     </div>
