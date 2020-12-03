@@ -33,7 +33,7 @@ export default function Posts({ data, showYears }) {
   const postsByYear = {}
 
   data.forEach((post) => {
-    const year = post.date.split(', ')[1]
+    const year = format(new Date(post.date),'dd MMMM, yyyy',{ locale:es }).split(', ')[1]
 
     postsByYear[year] = [...(postsByYear[year] || []), post]
   })

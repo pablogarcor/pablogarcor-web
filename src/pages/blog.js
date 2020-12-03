@@ -39,7 +39,7 @@ export const pageQuery = graphql`
       node {
         id
         slug
-        published_at(locale: "es", formatString: "MMMM DD, YYYY")
+        published_at
         title
       }
     }
