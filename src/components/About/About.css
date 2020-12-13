@@ -114,7 +114,7 @@ html {
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
   top: 6em;
-  z-index: 8;
+  z-index: 99;
 }
 
 @keyframes dash {

@@ -24,7 +24,7 @@ class About extends Component {
             <div className="container">
               <div className="wrapper">
 
-                <img className="profile" src={pablo} style={{borderRadius:"50%", width:"200px"}} />
+                <img className="profile" src={pablo} style={{borderRadius:"50%", width:"200px", zIndex:"100"}} />
 
                 <svg height="320" width="400" className="logo-triangle">
                   <defs>
