@@ -15,7 +15,7 @@ class About extends Component {
             <div className="container">
               <h1>Sobre mi</h1>
               <p className="subtitle">
-                Me llamo Pablo García Ortega. Soy ingeniero y desarrollador de software que toquetea
+                Me llamo Pablo García Ortega. Soy un ingeniero y desarrollador de software que toquetea
                 todo lo que huele a tecnología
               </p>
             </div>
